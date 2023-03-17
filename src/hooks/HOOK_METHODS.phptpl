@@ -1,0 +1,19 @@
+<?php
+
+public function changeCoupon(Request $request) {
+    $currentCart = app()->make('Cart');
+    $validatedData = Validator::make($request->all(), [
+        'code' => ['nullable', 'string', 'max:255']
+    ], Arr::dot((array)trans('admin/orders_phone/validation')))->validated();;
+    try {
+        $currentCart->setCouponCode( $validatedData['code']?? '' );
+    } catch(\Exception $e) {
+        throw \Illuminate\Validation\ValidationException::withMessages([
+            'code' =>  $e->getMessage()
+        ]);
+    }
+    if($request->ajax()){
+        return response()->json(['success' => 1]);
+    }
+    return back()->with('coupon_changed', 1);
+}

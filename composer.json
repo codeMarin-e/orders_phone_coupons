@@ -1,0 +1,31 @@
+{
+    "name": "marinar/orders_phone_coupons",
+    "description": "Phone orders coupons field",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marin Ivanov",
+            "email": "marin@dev.nddesign.no"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Marinar\\OrdersPhoneCoupons\\": "src/"
+        }
+    },
+
+    "require": {
+        "marinar/orders_phone": "*",
+        "marinar/coupons": "*"
+    },
+    "extra": {
+        "marinar": {
+            "module": false,
+            "plugin": false,
+            "addon_to": [
+                "marinar/orders_phone"
+            ]
+        }
+    }
+}
